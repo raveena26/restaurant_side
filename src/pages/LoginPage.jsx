@@ -2,7 +2,10 @@ import { useState } from "react";
 import loginBackgroundImg from "../assets/images/loginBackground.png";
 import {regex} from "../GlobalConstants";
 import { useNavigate } from "react-router-dom";
+import { useDispatch,useSelector } from "react-redux";
+import { errorActions } from "../store/error";
 import ErrorModal from "../components/ErrorModal";
+
 const styles = {
   txtColor: {
     color: "#f39494",
@@ -23,32 +26,41 @@ const styles = {
 const LoginPage = () => {
 
   const navigate=useNavigate();
+  const dispatch=useDispatch();
+  const errorVal= useSelector(state=>state.errorValues);
   const [loginValue, setLoginValue] = useState();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [passWord, setPassword] = useState("");
   const [firstName,setFirstName]=useState("")
   const[lastName,setLastName]=useState("")
+  
  
 
   const handleLoginSignUp = (handleValue) => {
     if(handleValue==="login"){
       if (userName === "" || passWord === "") {
-        console.log("All fields are mandatory");
+        dispatch(errorActions.updateErrorVal(true))
+        dispatch(errorActions.updateErrorMessage("All fields are mandatory"));
+        dispatch(errorActions.updateErrorTitle("Error"));
       } else {
-        console.log(userName, passWord,regex.test(email));
+        dispatch(errorActions.updateErrorVal(false))
         navigate('welcomeScreen',{ replace: true });
       }
     }
     else if(handleValue==="signUp"){
       if (userName === "" || passWord === "" || email ==="" ||firstName==="" || lastName==="") {
-        console.log("All fields are mandatory");
+        dispatch(errorActions.updateErrorVal(true))
+        dispatch(errorActions.updateErrorMessage("All fields are mandatory"));
+        dispatch(errorActions.updateErrorTitle("Error"));
       } else {
-        if(regex.test(email)){
-          console.log("Invalid email !!!");
+        if(!regex.test(email)){
+          dispatch(errorActions.updateErrorVal(true))
+          dispatch(errorActions.updateErrorMessage("Invalid email !!!"));
+          dispatch(errorActions.updateErrorTitle("Email Error"));
         }else{
-          console.log(userName, passWord,regex.test(email));
-          navigate('welcomeScreen',{ replace: true });
+          dispatch(errorActions.updateErrorVal(false))
+          //navigate('welcomeScreen',{ replace: true });
         }
        
       }
@@ -56,9 +68,12 @@ const LoginPage = () => {
     
   };
 
-
+const handleClose=()=>{
+  dispatch(errorActions.updateErrorVal(false))
+}
 
   return (
+    <>
     <div
       style={{
         backgroundImage: `url(${loginBackgroundImg})`,
@@ -78,7 +93,6 @@ const LoginPage = () => {
       >
         <h1 style={styles.txtColor}>Craving Something ?</h1>
         <h3 style={styles.txtColor}>Let's get started !</h3>
-
         {loginValue && (
           <>
             <input
@@ -196,6 +210,8 @@ const LoginPage = () => {
         )}
       </div>
     </div>
+    {errorVal.errorVal===true && <ErrorModal message={errorVal.errorMessage} title={errorVal.errorTitle} onClose={()=>{handleClose()}} />}
+    </>
   );
 };
 

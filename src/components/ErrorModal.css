@@ -1,0 +1,32 @@
+.modal {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding:300px;
+    align-items: center;
+    justify-content: center;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    
+}
+
+.modal-header .modal-footer {
+    padding:10px;
+}
+
+.modal-title {
+    margin:0;
+    color: #fff;
+}
+
+.modal-body {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    color: #fff;
+}
+
+.button {
+    margin-top: 20px;
+}
