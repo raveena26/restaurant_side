@@ -1,0 +1,12 @@
+.menuItem {
+  font-size: 30px;
+  color: rgb(159, 49, 49);
+  font-family: cursive;
+  margin: 250px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.menuDiv {
+  margin-top: 600px;
+}

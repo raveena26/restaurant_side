@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Classic Chicken Italiano Pizza", "price": "520" },
+  { "id": 2, "name": "Classic Farm Fresh Pizza", "price": "420" },
+  { "id": 3, "name": "Paneer Tandoori Sandwich", "price": "320" },
+  { "id": 4, "name": "Club Grilled Sandwich", "price": "340" },
+  { "id": 5, "name": "Mexicana Burger", "price": "350" },
+  { "id": 6, "name": "Jungle Veggie Delight", "price": "450" }
+]
