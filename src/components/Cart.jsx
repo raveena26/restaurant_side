@@ -24,8 +24,11 @@ const Cart = () => {
         return <div key={index}>
         
         <ItemCard>
-       <p>
-            {cI.name} "Quantity: " {cI.quantity}  "Price: " {cI.qprice}
+       <p style={{margin:"2px"}}>
+            {cI.name} 
+        </p>
+        <p style={{margin:"2px"}}>
+          "Quantity: " {cI.quantity}    "Price: " {cI.qprice}
         </p>
         <button onClick={()=>{handleRemoveFromCart(cI)}}>Remove from Cart</button>
         </ItemCard>
