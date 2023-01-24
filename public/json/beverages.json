@@ -1,0 +1,8 @@
+[
+  { "id": 7, "name": "Classic Cold Coffee", "price": "120" },
+  { "id": 8, "name": "Rapberry Mojito", "price": "160" },
+  { "id": 9, "name": "Lemon Mint Juice", "price": "90" },
+  { "id": 10, "name": "Green Tea(stress relieving)", "price": "120" },
+  { "id": 11, "name": "Vanilla MilkShake", "price": "150" },
+  { "id": 12, "name": "Blue Lemonade", "price": "160" }
+]
