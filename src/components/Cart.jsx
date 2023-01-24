@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../store/cart";
-
+import ItemCard from "./ItemCards";
 
 const Cart = () => {
 
@@ -14,15 +14,21 @@ const Cart = () => {
     const handleRemoveFromCart=(item)=>{
         dispatch(cartActions.removeFromcart(item));
     }    
-  return <div>CART
+  return <div  style={{
+    display: "inline-block",
+    fontFamily: "cursive",
+    fontSize: "larger",
+  }}>CART
 
     {cartVal.cartItems.map((cI,index)=>{
         return <div key={index}>
         
+        <ItemCard>
        <p>
             {cI.name} "Quantity: " {cI.quantity}  "Price: " {cI.qprice}
         </p>
         <button onClick={()=>{handleRemoveFromCart(cI)}}>Remove from Cart</button>
+        </ItemCard>
         </div>
     })}
 

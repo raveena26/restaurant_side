@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../store/cart";
-
+import { url } from "../GlobalConstants";
 const BeveragesMenu = () => {
   const navigate = useNavigate();
   const dispatch= useDispatch();
@@ -11,7 +11,7 @@ const BeveragesMenu = () => {
 
   useEffect(() => {
     async function fetchData() {
-      await fetch("../json/beverages.json")
+      await fetch(url+"/beveragemenu")
         .then(function (response) {
           return response.json();
         })
